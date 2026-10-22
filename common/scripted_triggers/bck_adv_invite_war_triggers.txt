@@ -63,37 +63,39 @@
 			trigger_if = {
 				limit = { exists = host }
 				#Are they employed?
-				is_councillor_of = scope:recruitee.host
-				is_knight_of = scope:recruitee.host
-				any_relation = {
-					type = ward
-					OR = {
-						this = scope:recruitee.host
-						is_close_family_of = scope:recruitee.host
+				OR = {
+					is_councillor_of = scope:recruitee.host
+					is_knight_of = scope:recruitee.host
+					any_relation = {
+						type = ward
+						OR = {
+							this = scope:recruitee.host
+							is_close_family_of = scope:recruitee.host
+						}
 					}
-				}
-				any_relation = {
-					type = guardian
-					OR = {
-						this = scope:recruitee.host
-						is_close_family_of = scope:recruitee.host
+					any_relation = {
+						type = guardian
+						OR = {
+							this = scope:recruitee.host
+							is_close_family_of = scope:recruitee.host
+						}
 					}
-				}
-				any_relation = {
-					type = mentor
-					OR = {
-						this = scope:recruitee.host
-						is_close_family_of = scope:recruitee.host
+					any_relation = {
+						type = mentor
+						OR = {
+							this = scope:recruitee.host
+							is_close_family_of = scope:recruitee.host
+						}
 					}
-				}
-				any_relation = {
-					type = student
-					OR = {
-						this = scope:recruitee.host
-						is_close_family_of = scope:recruitee.host
+					any_relation = {
+						type = student
+						OR = {
+							this = scope:recruitee.host
+							is_close_family_of = scope:recruitee.host
+						}
 					}
+					any_court_position_employer = { this = scope:recruitee.host }
 				}
-				any_court_position_employer = { this = scope:recruitee.host }
 			}
 			trigger_if = {
 				limit = {
@@ -225,6 +227,13 @@
 						exists = var:escaped_imprisonment_from
 						var:escaped_imprisonment_from = scope:recruiter
 					}
+				}
+			}
+			custom_description = {
+				text = "is_paiza_merchant"
+				subject = scope:recruitee
+				scope:recruitee = {
+					has_variable = merchant_var
 				}
 			}
 		}
